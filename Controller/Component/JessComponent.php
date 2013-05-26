@@ -4,22 +4,29 @@ App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
 App::uses('Component', 'Controller');
 
+/**
+ * Jess component
+ *
+ * @author Patrick Langendoen <github-bradcrumb@patricklangendoen.nl>
+ * @author Marc-Jan Barnhoorn <github-bradcrumb@marc-jan.nl>
+ * @copyright 2013 (c), Patrick Langendoen & Marc-Jan Barnhoorn
+ * @package Jess
+ * @license http://opensource.org/licenses/GPL-3.0 GNU GENERAL PUBLIC LICENSE
+ */
 class JessComponent extends Component {
 
 /**
- * LESS folders to compile
+ * JESS folders to compile
  */
 	private $__jessFolders = array();
 
 /**
- * CSS folders where compiled LESS files will be placed
+ * JS folders where compiled JESS files will be placed
  */
 	private $__jsFolders = array();
 
 /**
  * Initialisation logic. Sets the options
- *
- * @author Stef van den Ham
  *
  * @param {Controller} $controller
  *
@@ -64,8 +71,6 @@ class JessComponent extends Component {
 /**
  * Main conversion
  *
- * @author Stef van den Ham
- *
  * @param {Controller} $controller
  *
  * @return void
@@ -79,10 +84,8 @@ class JessComponent extends Component {
  *
  * This method auto compiles less files according to compile state and updating time
  *
- * @author Marc-Jan Barnhoorn
- *
- * @param {String} $inputFile LESS file path
- * @param {String} $outputFile CSS output file path
+ * @param {String} $inputFile JESS file path
+ * @param {String} $outputFile JS output file path
  *
  * @return void
  */
@@ -106,18 +109,12 @@ class JessComponent extends Component {
 		}
 	}
 
-	private function __stripComments($string) {
-		return preg_replace('#\s*//.*#', "", preg_replace('#/\*[^*]*\*+([^/][^*]*\*+)*/#', '', $string));
-	}
-
 /**
- * Clean the generated CSS files
- *
- * @author Marc-Jan Barnhoorn
+ * Clean the generated JS files
  *
  * @return String[] Array of paths we have removed
  */
-	public function cleanGeneratedCss() {
+	public function cleanGeneratedJs() {
 		//Cleaned files that we will return
 		$cleanedFiles = array();
 		foreach ($this->__jessFolders as $key => $jessFolder) {
@@ -144,9 +141,9 @@ class JessComponent extends Component {
 	}
 
 /**
- * Generate the CSS from all the LESS files we can find
+ * Generate the JS from all the JESS files we can find
  *
- * @return String[] Generated CSS files
+ * @return String[] Generated JS files
  */
 	public function generateJs() {
 		$generatedFiles = array();
