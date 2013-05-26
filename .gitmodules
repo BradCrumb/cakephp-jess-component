@@ -1,0 +1,3 @@
+[submodule "Vendor/jessc"]
+	path = Vendor/jessc
+	url = https://github.com/BradCrumb/jessphp.git
